@@ -1,26 +1,21 @@
-{{- if not .Values.statefulset.enabled }}
-{{- if .Values.persistence.pdName -}}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: {{ .Values.persistence.pdName }}
-  labels:
-{{ include "nexus.labels" . | indent 4 }}
-    {{- if .Values.nexus.extraLabels }}
-      {{- with .Values.nexus.extraLabels }}
-        {{ toYaml . | indent 4 }}
-      {{- end }}
-    {{- end }}
+  name: nexus-data
 spec:
   capacity:
-    storage: {{ .Values.persistence.storageSize }}
+    storage: 15Gi
   accessModes:
-    - ReadWriteOnce
-  claimRef:
-    namespace: {{ .Release.Namespace }}
-    name: {{ template "nexus.fullname" . }}-data
-  gcePersistentDisk:
-    pdName: {{ .Values.persistence.pdName }}
-    fsType: {{ .Values.persistence.fsType }}
-{{- end }}
-{{- end }}
+    - ReadWriteMany
+  azureFile:
+    secretName: azurefile-secret
+    secretNamespace: terraform
+    shareName: nexus
+    readOnly: false
+  mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+  - mfsymlinks
+  - nobrl

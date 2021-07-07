@@ -21,6 +21,14 @@ spec:
     - port: {{ .Values.nexus.nexusPort }}
       protocol: TCP
       name: nexus-ui
+    - name: docker-group
+      port: 8082
+      targetPort: 8082
+      protocol: TCP
+    - name: docker-hosted
+      port: 8083
+      targetPort: 8082
+      protocol: TCP
   selector:
     {{- include "nexus.selectorLabels" . | nindent 4 }}
     {{- if .Values.nexus.extraSelectorLabels }}
