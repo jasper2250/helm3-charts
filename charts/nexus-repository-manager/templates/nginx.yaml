@@ -25,7 +25,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: nexus-repo-nexus-repository-manager
+            name: {{ .Release.Name }}-nexus-repository-manager
             port:
               number: 8081
   tls:
@@ -40,11 +40,11 @@ metadata:
 data:
   nginx.conf: |
     upstream nexus_docker_get {
-        server nexus-repo-nexus-repository-manager:8082;
+        server {{ .Release.Name }}-nexus-repository-manager:8082;
     }
      
     upstream nexus_docker_put {
-        server nexus-repo-nexus-repository-manager:8083;
+        server {{ .Release.Name }}-nexus-repository-manager:8083;
     }
     server {
         listen 80;
