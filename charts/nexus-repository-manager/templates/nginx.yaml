@@ -18,7 +18,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-body-size: "1024m"
 spec:
   rules:
-  - host: nexus.342586163.ga
+  - host: www.342586163.ga
     http:
       paths:
       - path: /
@@ -30,7 +30,7 @@ spec:
               number: 8081
   tls:
       - hosts:
-          - nexus.342586163.ga
+          - www.342586163.ga
         secretName: nexus-secret
 ---
 apiVersion: v1
