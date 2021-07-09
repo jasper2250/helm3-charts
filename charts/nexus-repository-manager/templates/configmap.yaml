@@ -29,7 +29,7 @@ data:
     -Dkaraf.base=.
     -Dkaraf.etc=etc/karaf
     -Djava.util.logging.config.file=etc/karaf/java.util.logging.properties
-    -Dkaraf.data=/mnt/nexus3
+    -Dkaraf.data=/mnt/nexus-data
     -Dkaraf.log=../sonatype-work/nexus3/log
     -Djava.io.tmpdir=../sonatype-work/nexus3/tmp
     -Dkaraf.startLocalConsole=false
