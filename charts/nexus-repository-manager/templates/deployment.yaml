@@ -90,10 +90,14 @@ spec:
               mountPath: /mnt/cache
             - name: nexus3
               mountPath: /mnt/nexus3
-            - name: nexus-vmoptions
-              mountPath: /opt/sonatype/nexus/bin/nexus.vmoptions
-              subPath: nexus.vmoptions
-              readOnly: true
+            - name: db
+              mountPath: /nexus-data/db
+            - name: blobs
+              mountPath: /nexus-data/blobs
+            # - name: nexus-vmoptions
+            #   mountPath: /opt/sonatype/nexus/bin/nexus.vmoptions
+            #   subPath: nexus.vmoptions
+            #   readOnly: true
             {{- if .Values.config.enabled }}
             - mountPath: {{ .Values.config.mountPath }}
               name: {{ template "nexus.name" . }}-conf
@@ -129,6 +133,10 @@ spec:
         - name: cache
           emptyDir: {}
         - name: nexus3
+          emptyDir: {}
+        - name: db
+          emptyDir: {}
+        - name: blobs
           emptyDir: {}
         - name: nexus-vmoptions
           configMap:
