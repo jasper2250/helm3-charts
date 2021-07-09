@@ -35,7 +35,7 @@ metadata:
   name: nexus-db
 spec:
   capacity:
-    storage: 10Gi
+    storage: 9Gi
   accessModes:
     - ReadWriteMany
   azureFile:
