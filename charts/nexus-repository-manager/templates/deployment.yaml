@@ -84,7 +84,7 @@ spec:
             {{- end }}
             {{- end }}
           volumeMounts:
-            - mountPath: /nexus-data
+            - mountPath: /mnt/nexus-data
               name: {{ template "nexus.name" . }}-data
             - name: cache
               mountPath: /mnt/cache
