@@ -18,7 +18,7 @@ nexus:
     #    secretName: registrySecret
   env:
     - name: install4jAddVmParams
-      value: "-Xms1200M -Xmx1200M -XX:MaxDirectMemorySize=2G -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+      value: "-Xms1200M -Xmx1200M -XX:MaxDirectMemorySize=2G -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Dkaraf.data=/mnt/cache"
     - name: NEXUS_SECURITY_RANDOMPASSWORD
       value: "true"
   properties:
