@@ -86,7 +86,7 @@ deployment:
         # mountPath: /nexus-data
   # # Uncomment and modify this to run a command after starting the nexus container.
   postStart:
-    command:     '["ln -s /mnt/cache /mnt/nexus-data/cache"]'
+    command:     '["ln", "-s", "/mnt/cache" "/mnt/nexus-data/cache"]'
   preStart:
     command:    # '["/bin/rm", "-f", "/path/to/lockfile"]'
   terminationGracePeriodSeconds: 120
