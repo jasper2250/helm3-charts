@@ -84,10 +84,12 @@ spec:
             {{- end }}
             {{- end }}
           volumeMounts:
-            - mountPath: /mnt/nexus-data
+            - mountPath: /mnt/azurefile
               name: {{ template "nexus.name" . }}-data
             - name: cache
               mountPath: /mnt/cache
+            - name: nexus-data
+              mountPath: /mnt/nexus-data
             - name: nexus-vmoptions
               mountPath: /opt/sonatype/nexus/bin/nexus.vmoptions
               subPath: nexus.vmoptions
@@ -125,6 +127,8 @@ spec:
           emptyDir: {}
           {{- end }}
         - name: cache
+          emptyDir: {}
+        - name: nexus-data
           emptyDir: {}
         - name: nexus-vmoptions
           configMap:
