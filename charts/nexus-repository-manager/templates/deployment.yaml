@@ -86,6 +86,8 @@ spec:
           volumeMounts:
             - mountPath: /nexus-data	
               name: {{ template "nexus.name" . }}-data
+            - name: cache
+              mountPath: /mnt/cache
             {{- if .Values.config.enabled }}
             - mountPath: {{ .Values.config.mountPath }}
               name: {{ template "nexus.name" . }}-conf
@@ -118,6 +120,8 @@ spec:
           {{- else }}
           emptyDir: {}
           {{- end }}
+        - name: cache
+          emptyDir: {}
         {{- if .Values.config.enabled }}
         - name: {{ template "nexus.name" . }}-conf
           configMap:
