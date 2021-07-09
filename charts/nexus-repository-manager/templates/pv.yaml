@@ -28,3 +28,47 @@ spec:
   - gid=1000
   - mfsymlinks
   - nobrl
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nexus-db
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  azureFile:
+    secretName: azurefile-secret
+    secretNamespace: {{ .Release.Namespace }}
+    shareName: nexus-db
+    readOnly: false
+  mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+  - mfsymlinks
+  - nobrl
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nexus-blobs
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  azureFile:
+    secretName: azurefile-secret
+    secretNamespace: {{ .Release.Namespace }}
+    shareName: nexus-blobs
+    readOnly: false
+  mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+  - mfsymlinks
+  - nobrl

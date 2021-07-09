@@ -135,9 +135,11 @@ spec:
         - name: nexus3
           emptyDir: {}
         - name: db
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: nexus-db
         - name: blobs
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: nexus-blobs
         - name: nexus-vmoptions
           configMap:
             name: nexus-vmoptions
