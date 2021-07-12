@@ -91,9 +91,9 @@ spec:
             - name: nexus3
               mountPath: /mnt/nexus3
             - name: db
-              mountPath: /nexus-data/db
+              mountPath: /mnt/db
             - name: blobs
-              mountPath: /nexus-data/blobs
+              mountPath: /mnt/blobs
             # - name: nexus-vmoptions
             #   mountPath: /opt/sonatype/nexus/bin/nexus.vmoptions
             #   subPath: nexus.vmoptions
