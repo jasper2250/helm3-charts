@@ -86,14 +86,14 @@ spec:
           volumeMounts:
             - mountPath: /mnt/nexus-data
               name: {{ template "nexus.name" . }}-data
-            - name: cache
-              mountPath: /mnt/cache
+            # - name: cache
+            #   mountPath: /mnt/cache
             - name: nexus3
-              mountPath: /mnt/nexus3
+              mountPath: /nexus-data
             - name: db
-              mountPath: /mnt/db
+              mountPath: /nexus-data/db
             - name: blobs
-              mountPath: /mnt/blobs
+              mountPath: /nexus-data/blobs
             # - name: nexus-vmoptions
             #   mountPath: /opt/sonatype/nexus/bin/nexus.vmoptions
             #   subPath: nexus.vmoptions
@@ -132,8 +132,13 @@ spec:
           {{- end }}
         - name: cache
           emptyDir: {}
+        # - name: nexus3
+        #   emptyDir: {}
         - name: nexus3
-          emptyDir: {}
+          azureDisk:
+            kind: Managed
+            diskName: nexus
+            diskURI: /subscriptions/78ef9a5e-42b9-4450-936c-b825a06d3ed7/resourceGroups/aks2/providers/Microsoft.Compute/disks/nexus
         - name: db
           persistentVolumeClaim:
             claimName: nexus-db
