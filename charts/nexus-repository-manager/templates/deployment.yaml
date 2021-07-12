@@ -138,7 +138,7 @@ spec:
           azureDisk:
             kind: Managed
             diskName: nexus
-            diskURI: /subscriptions/78ef9a5e-42b9-4450-936c-b825a06d3ed7/resourceGroups/aks2/providers/Microsoft.Compute/disks/nexus
+            diskURI: /subscriptions/78ef9a5e-42b9-4450-936c-b825a06d3ed7/resourceGroups/MC_aks2_aks3_eastus/providers/Microsoft.Compute/disks/nexus
         - name: db
           persistentVolumeClaim:
             claimName: nexus-db
