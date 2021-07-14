@@ -6,7 +6,7 @@ deploymentStrategy: Recreate
 image:
   # Sonatype Official Public Image
   repository: sonatype/nexus3
-  tag: 3.31.1
+  tag: 3.32.0
   pullPolicy: IfNotPresent
 
 nexus:
@@ -135,8 +135,8 @@ nexusProxyRoute:
 persistence:
   enabled: true
   azurefile:
-    name: xiexynexus
-    password: xEN+I4SH8UEf3RoFg/WDuSfb/+NC6oXT1g8EsPYQj9HNuJhosXlcKDFUijDFRQAPbslb7gqoQQz2kdahw4n5wg==
+    name: insert azurefile name
+    password: insert azurefile password
   # accessMode: ReadWriteOnce
   ## If defined, storageClass: <storageClass>
   ## If set to "-", storageClass: "", which disables dynamic provisioning
